@@ -3,7 +3,6 @@ const common = require("./webpack.common");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const lightningcss = require("lightningcss");
 const browserslist = require("browserslist");
-const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
@@ -19,13 +18,5 @@ module.exports = merge(common, {
     ],
     usedExports: true,
   },
-  plugins: [
-    new WorkboxPlugin.GenerateSW({
-      clientsClaim: true,
-      skipWaiting: true,
-      runtimeCaching: [
-        { urlPattern: new RegExp(".*"), handler: "StaleWhileRevalidate" },
-      ],
-    }),
-  ],
+  plugins: [],
 });

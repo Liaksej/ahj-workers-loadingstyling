@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
   target: "web",
@@ -8,6 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     publicPath: "",
   },
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -54,6 +56,31 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css",
+    }),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+      runtimeCaching: [
+        {
+          urlPattern: /\.html$/,
+          handler: "StaleWhileRevalidate",
+          options: { cacheName: "html" },
+        },
+        {
+          urlPattern: /\.css$/,
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "css-cache",
+          },
+        },
+        // {
+        //   urlPattern: new RegExp(".(js)$"),
+        //   handler: "NetworkFirst",
+        //   options: {
+        //     cacheName: "images-js-cache",
+        //   },
+        // },
+      ],
     }),
   ],
 };
