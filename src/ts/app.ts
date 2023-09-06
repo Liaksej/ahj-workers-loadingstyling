@@ -42,8 +42,23 @@ function app() {
     )
     .pipe(
       catchError((err: AjaxError) => {
+        console.log("Error", err);
+        const mainBlock = document.querySelector(".main-block");
+        mainBlock?.classList.add("relative");
+        const overlay = document.createElement("div");
+        overlay.classList.add(
+          "absolute",
+          "inset-0",
+          "bg-black",
+          "bg-opacity-20",
+          "flex",
+          "items-center",
+          "justify-center",
+        );
+
+        overlay.innerHTML = `<div class="text-white text-center w-1/2">Не удалось загрузить данные. Проверьте подключение и обновите страницу</div>`;
+        mainBlock?.append(overlay);
         if (err.status !== 200) {
-          console.log("Error", err);
           return EMPTY;
         } else {
           return throwError(() => err.name);
