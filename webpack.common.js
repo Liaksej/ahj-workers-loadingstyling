@@ -9,7 +9,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     publicPath: "",
   },
-  devtool: "source-map",
+  // devtool: "source-map",
   module: {
     rules: [
       {
@@ -73,13 +73,6 @@ module.exports = {
             cacheName: "css-cache",
           },
         },
-        // {
-        //   urlPattern: new RegExp(".(js)$"),
-        //   handler: "NetworkFirst",
-        //   options: {
-        //     cacheName: "images-js-cache",
-        //   },
-        // },
       ],
     }),
   ],
