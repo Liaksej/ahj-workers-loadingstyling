@@ -62,16 +62,9 @@ module.exports = {
       skipWaiting: true,
       runtimeCaching: [
         {
-          urlPattern: /\.html$/,
+          urlPattern: /\.(?:html|css)$/,
           handler: "StaleWhileRevalidate",
-          options: { cacheName: "html" },
-        },
-        {
-          urlPattern: /\.css$/,
-          handler: "StaleWhileRevalidate",
-          options: {
-            cacheName: "css-cache",
-          },
+          options: { cacheName: "html-css-cache" },
         },
       ],
     }),
