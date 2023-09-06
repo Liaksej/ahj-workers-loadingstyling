@@ -1,6 +1,6 @@
 # ahj-rxjs-loadingstyling
 
-[![Build status](https://ci.appveyor.com/api/projects/status/qobpbbwo0a7v8dh0?svg=true)](https://ci.appveyor.com/project/Liaksej/ahj-rxjs-pooling-client)
+[![Build status](https://ci.appveyor.com/api/projects/status/rqy26oumos26b9y6?svg=true)](https://ci.appveyor.com/project/Liaksej/ahj-workers-loadingstyling)
 
 
 https://liaksej.github.io/ahj-rxjs-loadingstyling/
